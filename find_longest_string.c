@@ -30,12 +30,7 @@ main() {
         }
     }
 
-    printf("\nThe longest line is %d characters long. The string itself is : \n\n", max_line_length);
-
-    for (int i = 0; i < max_line_length; i++) {
-        printf("%c", longest_line[i]);
-    }
-    printf("\n");
+    printf("\nThe longest line is %d characters long. The string itself is : \n\n%s\n", max_line_length, longest_line);
 }
 
 void array_copy(char src[], char target[], int size) {
