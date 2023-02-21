@@ -6,11 +6,11 @@
 #include <stdio.h>
 #include "stringutils.h"
 
-#ifndef STATE
-#define NOT_TRIMMED 0
-#define LEFT_TRIMMED 1
-#define RIGHT_TRIMMED 2
-#endif
+enum STATE {
+    NOT_TRIMMED = 0,
+    LEFT_TRIMMED = 1,
+    RIGHT_TRIMMED = 2
+};
 
 char* trim(const char* src) {
     int right_indx = strlen(src) - 1, 
