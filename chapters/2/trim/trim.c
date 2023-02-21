@@ -12,16 +12,15 @@
 #define RIGHT_TRIMMED 2
 #endif
 
-char* trim(char* src) {
-    int len = strlen(src),
-        right_indx = len - 1, 
+char* trim(const char* src) {
+    int right_indx = strlen(src) - 1, 
         left_indx = 0,
         state = NOT_TRIMMED;
 
-    for (; left_indx < right_indx; left_indx++, right_indx--) {
+    for (; left_indx < right_indx;) {
         if (state != LEFT_TRIMMED) {
             if (is_whitespace(*(src + left_indx))) {
-                *(src + left_indx) = '\0';
+                left_indx++;
             } else {
                 if (state != RIGHT_TRIMMED) {
                     state = LEFT_TRIMMED;
@@ -32,7 +31,7 @@ char* trim(char* src) {
         } 
         if (state != RIGHT_TRIMMED) {
             if (is_whitespace(*(src + right_indx))) {
-                *(src + right_indx) = '\0';
+                right_indx--;
             } else {
                 if (state != LEFT_TRIMMED) {
                     state = RIGHT_TRIMMED;
@@ -42,7 +41,10 @@ char* trim(char* src) {
             }
         }
     }
-    return src + left_indx;
+    int result_size = right_indx - left_indx + 1;
+    char* result = (char*) malloc(sizeof(char) * result_size);
+    memcpy(result, src, (size_t) result_size);
+    return result;
 }
 
 void printString(char *arr) {
