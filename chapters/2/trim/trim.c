@@ -60,6 +60,8 @@ int main(int argc, char const *argv[]) {
     printString(trim("I am alive!"));
     printString(trim("___there is no whitespaces in the beggining           "));
     printString(trim(".         DOT     ."));
+    printString(trim(""));
+    printString(trim("\t\n      \t \n"));
     return 0;
 }
 
