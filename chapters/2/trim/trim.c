@@ -43,7 +43,7 @@ char* trim(const char* src) {
     }
     int result_size = right_indx - left_indx + 1;
     char* result = (char*) malloc(sizeof(char) * result_size);
-    memcpy(result, src, (size_t) result_size);
+    memcpy(result, src + left_indx, (size_t) result_size);
     return result;
 }
 
@@ -57,6 +57,9 @@ void printString(char *arr) {
 
 int main(int argc, char const *argv[]) {
     printString(trim(" \t \n  alesha    \n "));
+    printString(trim("I am alive!"));
+    printString(trim("___there is no whitespaces in the beggining           "));
+    printString(trim(".         DOT     ."));
     return 0;
 }
 
